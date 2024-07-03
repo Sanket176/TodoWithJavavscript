@@ -19,7 +19,7 @@ const setTodoData=(data)=>{
 
         todoList.append(todoListItem);
 
-        container.append(todoList);//add our "todoList"(.js file) element to "conatiner"(.html file)
+        container.append(todoList);//add our "todoList"(.js file) element to "container"(.html file)
     });
 }
 
@@ -27,8 +27,43 @@ fetch("https://dummyjson.com/todos")
     .then((res) => res.json())
     .then((apiData) => setTodoData(apiData.todos))
     .catch((error) => console.log(error));//to handle errors
-
 // console.log(todoData);
+
+const handleSubmitClick =()=>{
+    console.log("Submit button Clicked");
+    console.log(inputData.value);
+    console.log(todoData);
+
+    const newInputArray = {
+        id: todoData.length + 1,
+        todo: inputData.value,
+        completed: false,
+      }
+
+      setTodoData([newInputArray]);
+}
+
+
+//getting value fom input tag
+const inputData = document.getElementById("inputTask");
+// const inputValue = inputData.value;
+
+//To add Data into our Todo
+const submitClicked = document.querySelector(".submit-button");
+submitClicked.addEventListener("click", handleSubmitClick);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
